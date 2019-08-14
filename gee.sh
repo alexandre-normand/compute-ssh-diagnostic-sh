@@ -109,14 +109,14 @@ if [ $? = 1 ]; then
   # list the network interface configuration
   # check if the configuration matches expectations
   # check for problem indicators: errors, overruns, collisions, dropped
-  /sbin/ifconfig
+  #/sbin/ifconfig
   # check if default resolvers were changed, expected to see:
   # nameserver 169.254.169.254
   # nameserver 10.240.0.1
   cat /etc/resolv.conf
   # list firewall rules
   # check for any restrictions which can prohibit access
-  /sbin/iptables-save | egrep -v 'Generated|Completed'
+  #/sbin/iptables-save | egrep -v 'Generated|Completed'
   # list routing table
   # check for default gateway to check expectations
   # check for the correctness of any custom routes
