@@ -126,34 +126,38 @@ if [ $? = 1 ]; then
   cat /etc/hosts.deny  | grep -v ^#
   echo
 fi;
-echo '### SSH and meta server reach'
+#echo '### SSH and meta server reach'
 # check sshd binary integrity, match it with the output from a different
 # installation but same distribution and version
-md5sum /usr/sbin/sshd
+#md5sum /usr/sbin/sshd
 # the below code simply tries to open TCP port 22 on localhost
 # and TCP port 80 on the metadata server
 # these are just TCP connection tests no attempts are made to
 # test the application level
-cat << EOF | /usr/bin/env python
-import socket
+#cat << EOF | /usr/bin/env python
+#import socket
+#
+#s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#result = s.connect_ex(('127.0.0.1', 22))
+#
+#if(result == 0):
+#    print 'tcp port 22 connected:',
+#    print(s.recv(4096)),
+#    s.close()
+#else:
+#    print 'could not connect to port 22'
+#s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#result = s.connect_ex(('169.254.169.254', 80))
+#if(result == 0):
+#    print 'metaserver 169.254.169.254:80 connected'
+#    s.close()
+#else:
+#    print 'metaserver 169.254.169.254:80 connection failed'
+#EOF
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-result = s.connect_ex(('127.0.0.1', 22))
+cat /etc/ssh/sshd_config
+cat ~/.ssh/ssh_config
 
-if(result == 0):
-    print 'tcp port 22 connected:',
-    print(s.recv(4096)),
-    s.close()
-else:
-    print 'could not connect to port 22'
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-result = s.connect_ex(('169.254.169.254', 80))
-if(result == 0):
-    print 'metaserver 169.254.169.254:80 connected'
-    s.close()
-else:
-    print 'metaserver 169.254.169.254:80 connection failed'
-EOF
 # list the port where sshd is listening 
 # as well as what is listening on TCP port 22 if not sshd
 # check if sshd is running on a non-standard port or if
