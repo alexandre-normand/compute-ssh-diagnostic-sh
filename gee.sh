@@ -132,8 +132,8 @@ echo '####### GEE #########'
 #    print 'metaserver 169.254.169.254:80 connection failed'
 #EOF
 
-cat /etc/ssh/sshd_config
-cat ~/.ssh/ssh_config
+sshd -T
+
 # list the port where sshd is listening 
 # as well as what is listening on TCP port 22 if not sshd
 # check if sshd is running on a non-standard port or if
