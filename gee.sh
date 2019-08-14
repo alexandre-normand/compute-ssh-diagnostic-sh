@@ -103,29 +103,6 @@ if [ "$VERBOSE" = "1" ]; then
 fi;
 
 echo '####### GEE #########'
-echo $SKIP | grep -qw "network"
-if [ $? = 1 ]; then
-  echo '### Network'
-  # list the network interface configuration
-  # check if the configuration matches expectations
-  # check for problem indicators: errors, overruns, collisions, dropped
-  #/sbin/ifconfig
-  # check if default resolvers were changed, expected to see:
-  # nameserver 169.254.169.254
-  # nameserver 10.240.0.1
-  #cat /etc/resolv.conf
-  # list firewall rules
-  # check for any restrictions which can prohibit access
-  #/sbin/iptables-save | egrep -v 'Generated|Completed'
-  # list routing table
-  # check for default gateway to check expectations
-  # check for the correctness of any custom routes
-  #/bin/netstat -rn
-  # list host access control file
-  # check if any rule is restricting access
-  #cat /etc/hosts.deny  | grep -v ^#
-  #echo
-fi;
 echo '### SSH and meta server reach'
 # check sshd binary integrity, match it with the output from a different
 # installation but same distribution and version
