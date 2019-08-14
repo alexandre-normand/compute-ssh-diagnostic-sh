@@ -120,11 +120,11 @@ if [ $? = 1 ]; then
   # list routing table
   # check for default gateway to check expectations
   # check for the correctness of any custom routes
-  /bin/netstat -rn
+  #/bin/netstat -rn
   # list host access control file
   # check if any rule is restricting access
-  cat /etc/hosts.deny  | grep -v ^#
-  echo
+  #cat /etc/hosts.deny  | grep -v ^#
+  #echo
 fi;
 echo '### SSH and meta server reach'
 # check sshd binary integrity, match it with the output from a different
