@@ -113,7 +113,7 @@ if [ $? = 1 ]; then
   # check if default resolvers were changed, expected to see:
   # nameserver 169.254.169.254
   # nameserver 10.240.0.1
-  cat /etc/resolv.conf
+  #cat /etc/resolv.conf
   # list firewall rules
   # check for any restrictions which can prohibit access
   #/sbin/iptables-save | egrep -v 'Generated|Completed'
